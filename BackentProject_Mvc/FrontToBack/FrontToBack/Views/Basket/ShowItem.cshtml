@@ -1,0 +1,106 @@
+﻿@model List<BasketVM>
+
+@{
+    ViewData["Title"] = "ShowItem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+   int total = 0;
+
+}
+<div class="container">
+
+    @if(TempData["succes"] !=null){
+    <div class="alert alert-succes sale">
+
+        @TempData["succes"]
+    </div>
+        }
+        
+    @if(TempData["fail"] !=null){
+    <div class="alert alert-succes sale">
+
+        @TempData["fail"]
+    </div>
+        }
+   
+    <div class="row">
+
+        @if (Model.Count()>0)
+        {
+        <table id="tableId " class="table">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                   
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+   {
+       total += (item.Price * item.ProductCount);
+       count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <td> <img width="50" src="~/img/@item.ImageUrl" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    
+                    <td class="productQuery">@item.ProductCount</td>
+                    <td>@(item.Price*item.ProductCount)</td>
+                    <td> <span data-value="@item.Id" class="minusTd" style="cursor:pointer;font-size:25px">-</span> <span class="@item.ProductCount">@item.ProductCount</span> <span data-value="@item.Id" class="plusTd" style="cursor:pointer; font-size:25px">+</span> </td>
+
+
+                    <td style="cursor:pointer" class="closeList" data-value="@item.Id">X</td>
+
+
+                </tr>
+
+  }
+
+            </tbody>
+        </table>
+
+        }
+        else
+        {
+        <a asp-controller="home" asp-action="index">Go to Home</a>
+        }
+
+    </div>
+
+    <div class="row">
+        <div>
+            @Model.Sum(p => p.Price * p.ProductCount)
+        </div>
+        <form asp-action="sale" method="post">
+            <button type="submit" class="btn btn-success" id="submitId"> Sale</button>
+        </form>
+    </div>
+</div>
+@section Script{
+
+<script>
+
+
+    setTimeOut(function ()
+    {
+
+        document.querySelectorAll(".sale").forEach(item=>{
+            item.remove();
+        
+        })
+
+
+    },5000)
+
+
+
+    </script>
+
+} 
