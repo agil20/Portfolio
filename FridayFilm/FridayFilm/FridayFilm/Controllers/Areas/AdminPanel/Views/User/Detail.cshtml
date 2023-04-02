@@ -1,0 +1,18 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="user_comment">
+   @foreach (var item in Model)
+  {
+       <li>
+         @item.Text
+
+    </li>
+  }
+
+
+</ul>
+

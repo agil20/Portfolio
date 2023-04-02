@@ -1,0 +1,104 @@
+﻿
+	<div class="container my_search_head">
+		<ul  class="search-wrapper d-none" id="SearchList">
+		
+			
+	
+		</ul>
+	</div>
+
+
+<header class="header">
+	<div class="header__wrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="header__content">
+					
+						<a href="index.html" class="header__logo">
+							<img src="~/img/friday.png" alt="">
+
+						</a>
+					
+
+						<ul class="header__nav">
+						
+							<li class="header__nav-item">
+								<a class="dropdown-toggle header__nav-link" asp-controller="Home" asp-action="Index" id="dropdownMenuHome" >Home </a>
+
+								
+							</li>
+						
+							<li class="header__nav-item">
+								<a class="dropdown-toggle header__nav-link" asp-controller="Catalog" asp-action="Index" asp-action="" role="button" id="dropdownMenuCatalog" >Catalog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">></svg></a>
+
+							</li>
+						
+						
+							
+						
+									<li class="header__nav-item">
+								<a asp-controller="Pricing" asp-action="Index" class="header__nav-link">Pricing Plan</a>
+							</li>
+							
+
+							<li class="dropdown header__nav-item">
+								<a class="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,10a2,2,0,1,0,2,2A2,2,0,0,0,12,10ZM5,10a2,2,0,1,0,2,2A2,2,0,0,0,5,10Zm14,0a2,2,0,1,0,2,2A2,2,0,0,0,19,10Z"/></svg>
+								</a>
+
+								<ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuMore">
+									<li><a asp-controller="Profile" asp-action="Index">Profile</a></li>
+									<li><a asp-controller="Account" asp-action="Login">Sign In</a></li>
+									<li><a asp-controller="Account" asp-action="Register">Sign Up</a></li>
+								
+									
+								</ul>
+							</li>
+						</ul>
+					
+						<div class="header__auth">
+							<button  id="menuBtn" class="header__search-btn" aria-label="search btn" type="button">
+								<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
+							
+							</button>
+
+							<a asp-controller="Account" asp-action="Login" class="header__sign-in">
+								<span>sign in</span>
+							</a>
+						</div>
+					
+						<button class="header__btn" type="button">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<form method="post" asp-action="Index" asp-controller="home" class="header__search">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 my_header">
+					<div class="header__search-content">
+						 <input name="search" id="search" type="text" placeholder="I'm looking for...">
+						
+						<button type="submit">Search</button>	
+			
+					
+						
+				
+					</div>
+			
+				
+				</div>
+			</div>
+		</div>
+	</form>
+	
+</header>

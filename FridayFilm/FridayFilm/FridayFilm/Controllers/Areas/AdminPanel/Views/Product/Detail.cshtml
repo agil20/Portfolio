@@ -1,0 +1,38 @@
+﻿@model Film
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+         <div class="col-md-6 d-flex align-items-stretch">
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">@Model.Name</h4>
+                      
+                        <img width="100" src="~/img/@Model.ImageUrl"> 
+                     <ul class="user_comment">
+                         @foreach (var item in Model.Comments)
+                        {
+                            <li>
+                               <span>@item.Text</span>     <a class="btn btn-danger my_close"  asp-action="delete" asp-route-Id="@item.Id"><i class="remove ti-close"></i></a>
+
+                            </li>
+                        }
+
+                     </ul>
+                
+                      
+                    </div>
+                  </div>
+                </div>
+            
+              </div>
+            </div>
+
+
+
+</div>
+
+

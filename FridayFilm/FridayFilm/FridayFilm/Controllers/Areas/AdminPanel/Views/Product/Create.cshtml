@@ -1,0 +1,97 @@
+﻿@model ProductCreateVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+
+      <div class="grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create Product form</h4>
+                
+                  <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label asp-for="Name" ></label>
+                      <input asp-for="Name"  class="form-control">
+                <span asp-validation-for="Name"> </span>
+                  </div>
+                    <div class="form-group">
+                      <label asp-for="IMDB" ></label>
+                      <input asp-for="IMDB"  class="form-control">
+                <span asp-validation-for="IMDB"> </span>
+                  </div>
+                                       <div class="form-group">
+                      <label asp-for="Desc" ></label>
+                      <input asp-for="Desc"  class="form-control">
+                <span asp-validation-for="Desc"> </span>
+                  </div>
+                        <div class="form-group">
+                      <label asp-for="Countr" ></label>
+                      <input asp-for="Countr"  class="form-control">
+                <span asp-validation-for="Countr"> </span>
+                  </div>
+                      <div class="form-group">
+                      <label asp-for="AgeLimit" ></label>
+                      <input asp-for="AgeLimit"  class="form-control">
+                <span asp-validation-for="AgeLimit"> </span>
+                  </div>
+                        <div class="form-group">
+                      <label asp-for="Fragman" ></label>
+                      <input asp-for="Fragman"  class="form-control">
+                <span asp-validation-for="Fragman"> </span>
+                  </div>
+                     <div class="form-group">
+                      <label asp-for="FilmUrl" ></label>
+                      <input asp-for="FilmUrl"  class="form-control">
+                <span asp-validation-for="FilmUrl"> </span>
+                  </div>
+                        <div class="form-group">
+                      <label asp-for="RunnigTime" ></label>
+                      <input asp-for="RunnigTime"  class="form-control">
+                <span asp-validation-for="RunnigTime"> </span>
+                  </div>
+                 <div class="form-group">
+                      <label asp-for="RealeaseYear" ></label>
+                      <input asp-for="RealeaseYear"  class="form-control">
+                <span asp-validation-for="RealeaseYear"> </span>
+                  </div>
+                
+
+             
+
+   <div class="col-md-4">
+                            <select asp-for="GenreId" class="form-select" asp-items="ViewBag.Genre">
+                                <option selected>Choose Tags</option>
+                            </select>
+                            <span style="color: red;" asp-validation-for="Genres"></span>
+                        </div>
+            
+
+          
+               <div class="form-group">
+                      <label asp-for="Photos" ></label>
+                      <input asp-for="Photos" multiple  class="form-control" >
+                <span class="text-danger" asp-validation-for="Photos"> </span>
+                  </div>
+
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <a asp-action="index" class="btn btn-dark">  Go back  </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+</div>
+
+
+
+
+
+

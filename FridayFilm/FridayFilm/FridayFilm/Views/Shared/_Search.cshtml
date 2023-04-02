@@ -1,0 +1,12 @@
+﻿@model List<Film>
+@foreach (var item in Model)
+{
+    <li  class="my_li">
+        <a  asp-controller="home" asp-action="detail" asp-route-Id="@item.Id">
+            <span >@item.Name</span>
+                            
+
+        </a>
+          <img width="50 " src="~/img/@item.ImageUrl">
+    </li>
+}

@@ -1,0 +1,25 @@
+﻿@model  List<Comment>
+@{
+    Layout = null;
+}
+	@foreach (var item in Model)
+								   {
+									   if (User.Identity.IsAuthenticated && (item.AppUserId==ViewBag.User ||  ViewBag.RightCounter>0))
+											{
+												<a data-check="@ViewBag.FilmId"  data-id="@item.Id" class="btn my-delete removeBtn subBtnDelete" >Delete</a>
+											}
+									   	<li class="comments__item comments__item--answer">
+											<div class="comments__autor">
+												<img class="comments__avatar" src="img/user.svg" alt="">
+												<span class="comments__name">@item.Author</span>
+												<span class="comments__time">@item.CreateComment</span>
+											</div>
+											<p class="comments__text">@item.Text</p>
+											<div class="comments__actions">
+												<div class="comments__rate">
+
+												</div>
+
+											</div>
+										</li>
+								   }

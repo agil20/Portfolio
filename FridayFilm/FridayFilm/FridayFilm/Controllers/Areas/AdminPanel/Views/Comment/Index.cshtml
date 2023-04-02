@@ -1,0 +1,65 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+       <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Basic Table</h4>
+              
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Comment</th>
+                          <th>Film</th>
+              
+
+                          <th>Settings</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                   @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                          <td>@count</td>
+                        
+                        
+                                                       
+                                            <td>@item.Text </td>
+
+                        
+                   
+                          <td>@item.Film.Name</td>
+                         
+                          <td>
+                       
+                        
+                            <a class="btn btn-danger"  asp-action="delete" asp-route-Id="@item.Id"><i class="remove ti-close"></i></a>
+                          </td>
+                        </tr>  
+                            }
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+             <div class="col-12 d-flex justify-content-center " >
+                  <nav aria-label="...">
+
+</nav>
+
+ </div>
+
+</div>
+

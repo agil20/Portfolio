@@ -1,0 +1,34 @@
+﻿@model Genre
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+
+      <div class="grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create Product form</h4>
+                
+                  <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                      <label asp-for="Name" ></label>
+                      <input asp-for="Name"  class="form-control">
+                <span asp-validation-for="Name"> </span>
+                  </div>
+                                
+                
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              <a asp-action="index" class="btn btn-dark">  Go back  </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+</div>
+
+

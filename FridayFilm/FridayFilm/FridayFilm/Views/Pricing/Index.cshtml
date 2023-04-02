@@ -1,0 +1,40 @@
+﻿@model List<Pricing>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+
+<!-- pricing -->
+<div class="section">
+
+
+	<div class="container">
+		
+		<div class="row">
+			@foreach (var item in Model)
+		   { 
+			
+			   	<div class="col-12 col-md-6 order-md-1 col-lg-4 order-lg-1">
+				<div class="price price--first">
+					<div class="price__item price__item--first"><span>@item.Name</span>
+					
+					 <span id="basic"> $<span>@item.Price</span></span>
+				 </div>
+				
+					<div class="price__item"><span>@item.Date</span> <span>Day</span></div>
+					<div class="price__item"><span>@item.Duration</span></div>
+
+					
+					<a data-id="@item.Id" class="price__btn">Choose Plan</a>
+				</div>
+			</div>
+		   }		<!-- price -->
+		
+			<!-- end price -->
+		</div>
+	</div>
+</div>
+
+
+

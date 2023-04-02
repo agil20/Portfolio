@@ -1,0 +1,176 @@
+﻿@model DetailVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<section class="section details">
+
+	<div class="details__bg" data-bg="img/home/home__bg.jpg"></div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1  class="details__title">@Model.film.Name</h1>
+			</div>
+		
+			<div class="col-12 col-xl-6">
+				<div class="card card--details">
+					<div class="card__cover">
+						<a href="@Model.film.FilmUrl" target="_blank">	<img src="~/img/@Model.film.ImageUrl" alt=""></a>
+					</div>
+		
+					<div class="card__content">
+						<div class="card__wrap">
+							<span class="card__rate"> @Model.film.IMDB</span>
+
+							<ul class="card__list">
+								
+								<li>@Model.film.AgeLimit</li>
+							</ul>
+						</div>
+
+						<ul class="card__meta">
+							
+							<li><span>Release year:</span> @Model.film.RealeaseYear</li>
+							<li><span>Running time:</span> @Model.film.RunnigTime</li>
+							<li><span>Country:</span> <a href="#">@Model.film.Countr</a> </li>
+						</ul>
+
+						<div class="card__description card__description--details">
+							@Model.film.Desc
+						</div>
+					</div>
+	
+				</div>
+			</div>
+			
+
+			<div class="col-12 col-xl-6">
+			@if (ViewBag.UserVatch)
+				{
+					<a href="@Model.film.Fragman" target="_blank"  class="fragman"> <h2>Fragman Izle</h2> </a>
+				}
+				else
+				{
+					<a asp-controller="Pricing" asp-action="index" class="fragman" ><h2>Paketi Indi elde et</h2> </a>
+				}
+
+			
+	
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="content">
+	<div class="content__head">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+			
+					<ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
+						<li class="nav-item" role="presentation">
+							<a class="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Comments</a>
+						</li>
+
+					</ul>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-lg-8 col-xl-8">
+			
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
+						<div class="row">
+							<div class="col-12">
+								<div class="comments">
+									<ul class="comments__list" id="com">
+									
+
+									@foreach (var item in Model.film.Comments)
+								   {
+									   if (User.Identity.IsAuthenticated && (item.AppUserId==ViewBag.User ||  ViewBag.RightCounter>0))
+											{
+												<a data-check="@Model.film.Id"  data-id="@item.Id" class="btn my-delete removeBtn subBtnDelete" >Delete</a>
+											}
+									   	<li class="comments__item comments__item--answer">
+											<div class="comments__autor">
+												<img class="comments__avatar" src="img/user.svg" alt="">
+												<span class="comments__name">@item.Author</span>
+												<span class="comments__time">@item.CreateComment</span>
+											</div>
+											<p class="comments__text">@item.Text</p>
+											<div class="comments__actions">
+												<div class="comments__rate">
+
+												</div>
+
+											</div>
+										</li>
+								   }
+
+								
+									</ul>
+									@if (ViewBag.Comment)
+									{
+											<form method="post" class="form">
+										<textarea id="text" name="text" type="text"  class="form__textarea" placeholder="Add comment"></textarea>
+										<button type="submit" id="subscribe-btn" data-id="@Model.film.Id" class="form__btn">Send</button>
+									</form>
+									}
+									else
+									{
+										<form method="post" class="form">
+										<textarea id="text"   class="form__textarea" placeholder="Comment atmaq Ucun qeydiyyat OLun"></textarea>
+									</form>
+									}
+								
+								</div>
+							</div>
+							
+						</div>
+					</div>
+
+				
+
+				
+				</div>
+			</div>
+
+			<div class="col-12 col-lg-4 col-xl-4">
+				<div class="row row--grid">
+			
+					<div class="col-12">
+						<h2 class="section__title section__title--sidebar">You may also like...</h2>
+					</div>
+		@foreach (var item in Model.Films)
+	   {
+		  if (!@item.IsDelete)
+						{
+							 	<div class="col-6 col-sm-4 col-lg-6">
+						<div class="card">
+							<a asp-action="detail" asp-route-Id="@item.Id" class="card__cover">
+								<img src="~/img/@item.ImageUrl" alt="">
+							
+							</a>
+							<div class="card__content">
+								<h3 class="card__title"><a asp-controller="home" asp-action="detail" asp-route-id="@item.Id">@item.Name</a></h3>
+							
+								<span class="card__rate">@item.IMDB</span>
+							</div>
+						</div>
+					</div>
+						}
+	   }
+			
+			
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
